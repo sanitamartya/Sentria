@@ -1,10 +1,11 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
+from pydantic import SecretStr
 
 class Settings(BaseSettings):
     app_name: str = "Sentria"
     environment: str = "development"
     debug: bool = True
+    gemini_api_key: SecretStr | None = None
 
     model_config = SettingsConfigDict(
         env_file=".env",
